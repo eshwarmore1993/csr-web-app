@@ -1,0 +1,116 @@
+<mat-card class="center">
+    <mat-card-header>
+        <mat-card-title>Projects</mat-card-title>
+        <mat-card-subtitle>Number of Projects Added
+            <mat-chip>&nbsp;<b>{{projects.length}}</b>&nbsp;</mat-chip>&nbsp;</mat-card-subtitle>
+        <mat-select placeholder="Select Project" matInput #qualificationControl="ngModel" name="qualification" [(ngModel)]="selectedProject"
+            required>
+            <mat-option *ngFor="let project of projects" [value]="project">
+                {{ project.title }}
+            </mat-option>
+        </mat-select>
+        <button #primary mat-raised-button [routerLink]='["/dashboard/project"]'><b>Add New Project</b></button>
+    </mat-card-header>
+    <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+    <mat-card-content>
+        <!--<p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+        </p>-->
+        <mat-grid-list cols="2" rowHeight="10:1">
+            <mat-grid-tile><b>Project Title</b></mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.title}}</mat-grid-tile>
+
+            <mat-grid-tile>Funding Amount</mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.amount}}</mat-grid-tile>
+
+            <mat-grid-tile>Geographic Location</mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.location}}</mat-grid-tile>
+
+            <mat-grid-tile>Beneficiary Category</mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.category}}</mat-grid-tile>
+
+            <mat-grid-tile>No. of Beneficiaries</mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.beneficiaries}}</mat-grid-tile>
+
+            <mat-grid-tile>CSR Focus Area</mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.area}}</mat-grid-tile>
+
+            <mat-grid-tile>Project Period</mat-grid-tile>
+            <mat-grid-tile>{{selectedProject?.period}}</mat-grid-tile>
+
+            <mat-grid-tile>Short temp Impact visibility</mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+
+            <mat-grid-tile>Long temp Impact visibility</mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+        </mat-grid-list>
+        <mat-card class="center">
+            <mat-accordion class="example-headers-align">
+                <mat-expansion-panel [expanded]="step === 0" hideToggle="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <b>Indicative Utilization Report</b>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Reporting Frequency &nbsp;
+                            <mat-chip style="background-color: lightgreen; text-align: center">&nbsp;<b>4 Months</b>&nbsp;</mat-chip>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 1" hideToggle="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <b>Indicative Progress Report</b>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Reporting Frequency &nbsp;
+                            <mat-chip style="background-color: lightgreen; text-align: center">&nbsp;<b>3 Months</b>&nbsp;</mat-chip>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+
+                    <mat-nav-list dense flex>
+                        <a mat-list-item>
+                            <mat-icon matListAvatar>person</mat-icon>
+                            <h3 matLine> Jyn Erso stole the plans to the Death Star </h3>
+                            <p matLine> 10 mins ago </p>
+                            <span></span>
+                        </a>
+                        <mat-divider></mat-divider>
+                        <a mat-list-item>
+                            <mat-icon matListAvatar>person</mat-icon>
+                            <h3 matLine> Something something something.. dark side. </h3>
+                            <p matLine> 9 hours ago </p>
+                            <span></span>
+                        </a>
+                        <mat-divider></mat-divider>
+                        <a mat-list-item>
+                            <mat-icon matListAvatar>person</mat-icon>
+                            <h3 matLine> Chirrut Îmwe beat down a bunch of storm troopers with a stick </h3>
+                            <p matLine> 2 days ago </p>
+                            <span></span>
+                        </a>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="step === 2" hideToggle="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <b>Monitoring Site Visit</b>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Frequency &nbsp;
+                            <mat-chip style="background-color: lightgreen; text-align: center">&nbsp;<b>1 Month</b>&nbsp;</mat-chip>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card>
+    </mat-card-content>
+    <mat-card-actions>
+        <!--<button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>-->
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,80 @@
+<mat-card class="center" tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+    <mat-card-title>
+        Add Project</mat-card-title>
+    <mat-card-subtitle>Create new Project to start tracking</mat-card-subtitle>
+    <td-message [opened]="loginFailed" label="Sorry incorrect username / password" color="warn" icon="error"></td-message>
+    <td-message [opened]="serverFailed" label="Opps connection fault, try again" color="warn" icon="error"></td-message>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form #loginForm="ngForm">
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="Project Title" type="text" maxlength="30" name="fname"
+                    [(ngModel)]="project.title" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="Funding Amount" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="project.amount" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="Geographic Location" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="project.location" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="Beneficiary Category" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="project.category" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="No. of Beneficiaries" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="project.beneficiaries" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="CSR Focus Area" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="project.area" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="Project Period" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="project.period" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions layout="row">
+        <button type="submit" mat-raised-button style="min-width: 200px" color="accent" [disabled]="!loginForm.form.valid" (click)="createProject()">Add Project</button>
+        <button mat-button [routerLink]='["/dashboard"]'>Cancel</button>
+    </mat-card-actions>
+</mat-card>
+<br>

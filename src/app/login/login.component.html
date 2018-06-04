@@ -1,0 +1,35 @@
+<app-toolbar></app-toolbar>
+<mat-card class="center" flex="50" tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>sign in via your created job account</mat-card-subtitle>
+    <td-message [opened]="loginFailed" label="Sorry incorrect username / password" color="warn" icon="error"></td-message>
+    <td-message [opened]="serverFailed" label="Opps connection fault, try again" color="warn" icon="error"></td-message>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <br>
+        <form #loginForm="ngForm">
+            <mat-form-field style="width: 100%">
+                <input matInput tabindex="0" matInput #userElement #userControl="ngModel" placeholder="Email" type="email" maxlength="30"
+                    name="email" [(ngModel)]="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+                <mat-hint align="end">Enter your registered email address</mat-hint>
+            </mat-form-field>
+            <br>
+            <mat-form-field style="width: 100%">
+                <input matInput #passElement #passControl="ngModel" placeholder="Password" type="password" name="password" [(ngModel)]="password"
+                    (keydown.enter)="login()" minlength="6" pattern=".{6,}" required>
+                <mat-hint align="start">
+                    <span [hidden]="!passControl.errors?.required || passControl.pristine" class="tc-red-600">Required 6 characters or more</span>
+                </mat-hint>
+                <mat-hint align="end">Something hard to guess</mat-hint>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions layout="row">
+        <button type="submit" mat-raised-button style="min-width: 200px" color="accent" [disabled]="!loginForm.form.valid" (click)="login()">Sign In</button>
+    </mat-card-actions>
+    <div class="register"> If not existing user, <a [routerLink]="['/register']">Sign Up</a></div>
+</mat-card>

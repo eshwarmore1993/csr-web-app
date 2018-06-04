@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span [routerLink]='["/dashboard"]'><b>4Impact</b></span>
+        <span class="title" style="margin-left: 0.8em;">{{ngoName}}</span>
+        <span class="example-fill-remaining-space"></span>
+        <span style="margin-left: 0.8em;" [routerLink]='["/dashboard/pipeline"]'>Pipelines</span>
+        <span style="margin-left: 0.8em" [routerLink]='["/dashboard/profile"]'>Profile</span>
+        <span style="margin-left: 0.8em" (click)="logout()">Logout</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

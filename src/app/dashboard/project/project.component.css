@@ -1,0 +1,18 @@
+.mat-card-title {font-size: 22px !important}
+.mat-chip {background-color: whitesmoke}
+.mat-card-subtitle {background-color: lightgreen; color: black}
+.mat-raised-button { max-height: 35px; align-self: center; background-color: skyblue; 
+                    margin: 0px auto; padding-left: 4px; padding-right: 4px;}
+mat-grid-tile {
+  background: lightblue;
+}
+.center{
+  width: 90%;
+  margin: 10px auto;
+  vertical-align: center !important;
+}
+
+.mat-expansion-panel-header-description{display: contents;}
+
+.mat-list-avatar{display: contents;}
+.mat-select { width: 40%}

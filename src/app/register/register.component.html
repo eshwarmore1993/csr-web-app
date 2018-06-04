@@ -1,0 +1,81 @@
+<app-toolbar></app-toolbar>
+<mat-card class="center" tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']">
+    <mat-card-title>
+        Register</mat-card-title>
+    <mat-card-subtitle>register here to get started</mat-card-subtitle>
+    <td-message [opened]="loginFailed" label="Sorry incorrect username / password" color="warn" icon="error"></td-message>
+    <td-message [opened]="serverFailed" label="Opps connection fault, try again" color="warn" icon="error"></td-message>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form #loginForm="ngForm">
+            <mat-form-field layout="column" flex="50">
+                <input tabindex="0" matInput #userElement #userControl="ngModel" placeholder="NGO Name (as per records)" type="text" maxlength="30"
+                    name="fname" [(ngModel)]="user.ngo_name" required style="text-transform:capitalize">
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+
+            </mat-form-field>
+
+            <mat-form-field flex>
+                <mat-select placeholder="NGO Sector" matInput #qualificationElement #qualificationControl="ngModel" name="qualification"
+                    [(ngModel)]="user.ngo_type" required>
+                    <mat-option *ngFor="let qualification of qualifications" [value]="qualification">
+                        {{ qualification }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint align="start">
+                    <span [hidden]="!qualificationControl.errors?.required || qualificationControl.pristine" class="tc-red-600">Please choose qualification</span>
+                </mat-hint>
+            </mat-form-field>
+
+            <!--<mat-form-field flex>
+                                <input matInput #userElement #userControl="ngModel" placeholder="Mobile Number" type="number" maxlength="10" name="mobile"
+                                    [(ngModel)]="user.mobile" pattern=".{10,10}" required>
+                                <mat-hint align="start">
+                                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                                </mat-hint>
+                                <mat-hint align="end">Enter your 10 digit mobile number</mat-hint>
+                            </mat-form-field>-->
+            <mat-form-field flex>
+                <input matInput #userElement #userControl="ngModel" placeholder="Contact Person Email" type="email" maxlength="30" name="email"
+                    [(ngModel)]="user.username" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                <!--<span md-prefix><mat-icon>person</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
+                </mat-hint>
+                <mat-hint align="end">Enter your email address</mat-hint>
+            </mat-form-field>
+            <mat-form-field flex>
+                <input matInput #passElement #passControl="ngModel" placeholder="Create New Password" type="password" name="password" [(ngModel)]="user.password"
+                    pattern=".{6,}" required>
+                <!--<span md-prefix><mat-icon>lock</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!passControl.errors?.required || passControl.pristine" class="tc-red-600">Required 6 characters or more</span>
+                </mat-hint>
+                <mat-hint align="end">Enter new password</mat-hint>
+            </mat-form-field>
+            <mat-form-field flex>
+                <input matInput #passElement #passControl="ngModel" placeholder="Confirm Password" type="password" name="new-password" [pattern]="user.password"
+                    [(ngModel)]="confirmPassword" required>
+                <!--<span md-prefix><mat-icon>lock</mat-icon></span>-->
+                <mat-hint align="start">
+                    <span [hidden]="!passControl.errors?.required || passControl.pristine" class="tc-red-600">Password enterd does not match the above</span>
+                </mat-hint>
+                <mat-hint align="end">Re enter the password</mat-hint>
+            </mat-form-field>
+
+            <!--<div layout="row">
+                <mat-radio-group name="sex" [(ngModel)]="user.sex">
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>-->
+        </form>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions layout="row">
+        <button type="submit" mat-raised-button style="min-width: 200px" color="accent" [disabled]="!loginForm.form.valid" (click)="register()">Register</button>
+    </mat-card-actions>
+</mat-card>
